@@ -2,13 +2,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class UnitsTestsJunitFour {
-    // public static void main(String[] args) {
-
-    // }
 
   @Test
   public void whenThis_thenThat() {
-      assertTrue(true);
+      assertEquals(true, false);
+        // assertTrue(true);
   }
 
   @Test
