@@ -1,44 +1,58 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.208.0/containers/java-8
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.208.0/containers/ubuntu
 {
-	"name": "Java 8",
+	"name": "Ubuntu",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"args": {
-			// Use the VARIANT arg to pick a Debian OS version: buster, bullseye
-			// Use bullseye when running on local arm64/Apple Silicon.
-			"VARIANT": "buster",
-			// Options
-			"INSTALL_MAVEN": "false",
-			"INSTALL_GRADLE": "false",
-			"NODE_VERSION": "10"
-		}
+		// Update 'VARIANT' to pick an Ubuntu version: hirsute, focal, bionic
+		// Use hirsute or bionic on local arm64/Apple Silicon.
+		"args": { "VARIANT": "focal" }
 	},
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"java.home": "/docker-java-home",
-		"java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current",
-		"java.configuration.runtimes": [{
-			"default": true,
-			"name": "JavaSE-1.8",
-			"path": "/usr/local/sdkman/candidates/java/current"
-		}]
+		// ***********************
+		// Editor
+		// ***********************    
+		"editor.hover.enabled": false,
+		"editor.inlayHints.enabled": false,
+		"editor.parameterHints.enabled": false,
+		"editor.quickSuggestions": {
+			"other": false,
+			"comments": false,
+			"strings": false
+		},
+		"editor.autoClosingBrackets": "never",  
+		// Java
+		"java.completion.enabled": false,
+		"java.debug.logLevel": "error",
+		// Language Support for Java extension
+		"java.autobuild.enabled": false,
+		"java.configuration.updateBuildConfiguration": "disabled",
+		// ***********************
+		// Coderunner
+		// ***********************		
+		"code-runner.clearPreviousOutput": true,
+		"code-runner.customCommand": "",
+		"code-runner.runInTerminal": true
 	},
-	
+
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		// "vscjava.vscode-java-pack"
 		"formulahendry.code-runner",
 		"GitHub.classroom"
+
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "java -version",
+	// "postCreateCommand": "uname -a",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"features": {
+		"java": "8"
+	}
 }
